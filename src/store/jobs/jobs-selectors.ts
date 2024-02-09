@@ -1,9 +1,7 @@
 import { RootState } from '../index';
 import { ItemType } from '../types'
 
-export const selectAllJobs = (state: RootState) => state.jobs;
-
-export const selectVisiblePositions = (state: RootState, filters = []) => {
+export const selectVisiblePositions = (state: RootState, filters: string[] = []) => {
     if (filters.length === 0) return state.jobs;
 
     return state.jobs.filter((job: ItemType) => {
