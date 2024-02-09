@@ -1,18 +1,18 @@
 import Badge from 'UI/Badge';
 import Card from 'UI/Card';
 import Stack from 'UI/Stack';
-import { useSelector, useDispatch } from "react-redux";
-import { selectCategores } from 'store/categores/categores-selectors';
-import { delCategore, clearCategore } from '../store/categores/categores-actions'
+import { useAppDispatch, useAppSelector } from 'store';
+import { selectCategores } from 'store/selectors';
+import { deleteCategores, clearCategores} from '../store/categoresSlice'
 
 
 
 export default function FilterPanel() {
-  const dispatch = useDispatch();
-  const badges = useSelector(selectCategores);
+  const dispatch = useAppDispatch();
+  const badges = useAppSelector(selectCategores);
 
   const handelDelFilter = (filter: string) => {
-    dispatch(delCategore(filter))
+    dispatch(deleteCategores(filter))
   }
 
   // console.log(badges);
@@ -31,7 +31,7 @@ export default function FilterPanel() {
           ))}
         </Stack>
 
-        <button className='link' onClick={() => dispatch(clearCategore())}>Clear</button>
+        <button className='link' onClick={() => dispatch(clearCategores())}>Clear</button>
       </div>
     </Card>
   )

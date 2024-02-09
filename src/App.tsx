@@ -3,11 +3,11 @@ import JobList from 'components/JobList';
 import TheHeader from 'components/TheHeader';
 import data from './mock/data.json';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { addJobs } from './store/jobs/jobs-actions'
+import { useAppDispatch } from 'store';
+import { addJobs } from './store/jobsSlice'
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(addJobs(data))
